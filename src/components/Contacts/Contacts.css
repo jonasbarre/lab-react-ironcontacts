@@ -1,0 +1,8 @@
+.idcard {
+    display: flex;
+    flex-direction: row;   
+}
+
+.idcard > img {
+    height: 10rem;
+}
