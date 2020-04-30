@@ -38,6 +38,12 @@ export default class App extends Component {
     this.setState({contacts: initialState})
   }
 
+  deleteContact = (something) => {
+    let initialState = this.state.contacts
+    initialState.splice(something,1)
+    this.setState({contacts: initialState})
+  }
+
   render() {
     return (
       <>
@@ -47,12 +53,15 @@ export default class App extends Component {
         <button onClick={this.addRandomContact}>Add a random contact</button>
         <button onClick={this.sortName}>sort by name</button>
         <button onClick={this.sortpopularity}>sort by popularity</button>
-        {this.state.contacts.map(contact => (
+        {this.state.contacts.map((contact, index) => (
+        <>
         <ContactsTwo key={contact.id}
         popularity={contact.popularity}
         pictureUrl={contact.pictureUrl}
         name={contact.name}
         /> 
+        <button onClick={() => this.deleteContact(index)}>delete</button>
+        </>
         ))}
              
       </div>
